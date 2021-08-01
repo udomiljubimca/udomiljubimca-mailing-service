@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mailing-service:
+    container_name: mailing-service
+    build:
+      context: ./
+      # args: 
+      #   TEST: Test
+    image: udomiljubimca/mailing-service:1.0
+    environment: 
+      EMAIL: ${EMAIL}
+      PASSWORD: ${PASSWORD}
+    ports:
+    - 8083:8080
+    networks:
+    - udomiljubimca_dev
+networks:
+  udomiljubimca_dev:
+    external:
+      name: udomiljubimca_dev
