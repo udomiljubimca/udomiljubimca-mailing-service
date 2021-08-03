@@ -10,8 +10,11 @@ class EmailToSend():
     def send(self):
         sender_email = os.getenv('EMAIL')
         sender_password = os.getenv('PASSWORD')
+        smtp_host = os.getenv('SMTP_HOST')
+        smtp_port = os.getenv('SMTP_PORT')
         from_addr = sender_email
         to = self.reciver_email  
+
         msg = MIMEMultipart()
         msg["from_addr"] = from_addr
         msg["to"] = to 
@@ -20,7 +23,7 @@ class EmailToSend():
         body = self.message
         msg.attach(MIMEText(body, "Plain"))
 
-        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server = smtplib.SMTP(smtp_host, smtp_port)
         server.ehlo()
         server.starttls()
         server.login(sender_email, sender_password)
