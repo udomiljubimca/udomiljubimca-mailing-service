@@ -8,6 +8,8 @@ RUN pip install --no-cache-dir -r /app/requirements.txt && \
 
 ENV EMAIL ${EMAIL}
 ENV PASSWORD ${PASSWORD}
+ENV SMTP_HOST ${SMTP_HOST}
+ENV SMTP_PORT ${SMTP_PORT}
 
 WORKDIR /app
 
